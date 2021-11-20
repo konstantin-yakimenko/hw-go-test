@@ -1,8 +1,14 @@
 package main
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/stretchr/testify/assert"
+)
 
 func TestAverage(t *testing.T) {
-	main()
-	t.Log("test passed")
+	result := reverse("Hello, OTUS!")
+	expected := "!SUTO ,olleH"
+
+	assert.Equal(t, result, expected, "The two words should be the same.")
 }

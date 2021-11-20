@@ -8,5 +8,9 @@ import (
 
 func main() {
 	input := "Hello, OTUS!"
-	fmt.Println(stringutil.Reverse(input))
+	fmt.Println(reverse(input))
+}
+
+func reverse(input string) string {
+	return stringutil.Reverse(input)
 }
