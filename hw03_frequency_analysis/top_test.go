@@ -79,4 +79,24 @@ func TestTop10(t *testing.T) {
 			require.Equal(t, expected, Top10(text))
 		}
 	})
+
+	additionalTests := []struct {
+		input    string
+		expected []string
+	}{
+		{input: "cat and dog\n", expected: []string{"and", "cat", "dog"}},
+		{input: "oneword", expected: []string{"oneword"}},
+		{input: " oneword ", expected: []string{"oneword"}},
+		{input: "-", expected: []string{"-"}},
+		{input: "\n", expected: []string(nil)},
+		{input: " ", expected: []string(nil)},
+		{input: "One one one one! one, one- one!", expected: []string{"one", "one!", "One", "one,", "one-"}},
+	}
+
+	for _, tc := range additionalTests {
+		tc := tc
+		t.Run(tc.input, func(t *testing.T) {
+			require.Equal(t, tc.expected, Top10(tc.input))
+		})
+	}
 }
